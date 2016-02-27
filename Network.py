@@ -3,7 +3,8 @@ import cgi, string, sys, rnd5crypt, time
 import numpy as np
 class GpsData(object):
    def connection(self,locationdata):
-	  if self.locationdata():
+	  if self.locationdata() not= locationdata() :
+		 item []  = locationdata()
    def locationdata(gps_X,gps_Y):
 	  print (gps_X)
 	  print (gps_Y)
