@@ -7,24 +7,32 @@ class GpsData(object):
 
 
    def connection(self,locationdata):
-	  if self.locationdata:
+	  if self.locationdata():
 
    
    def locationdata(gps_X,gps_Y):
+	  print (gps_X)
+	  print (gps_Y)
 	  if (self.gps_X ) and (self.gps_Y):
 		 for self.gps_X in range(0,connection):
-			(self.gps_X - self.gps_X):
+			total_gps_X=self.gps_X - gps_X):
+			   print (gps_X)
+			   print (self.gps_X)
+			   print (total_gps_X)
 		 for self.gps_Y in range(0,connection):
-			(self.gps_Y-self.gps_Y)
-   def distance();
-	  distance= (self.locationdata)
+			total_gps_Y=(self.gps_Y-gps_Y)
+			print (self.gps_Y)
+			print (gps_Y)
+			print (total_gps_Y)
+		 else:
+		 
+	  distance= math.sqrt(math.pow(total_gps_X,2) + math.pow(total_gps_Y,2)) 
    #### global-scoped vars #### 
 def generate_form():
    sender =  None
    reciever = None
-   senderID = connection()
-   recieverID =connection()
-  
+   senderID = locationdata
+   recieverID = locationdata
    
 
 
