@@ -1,0 +1,1 @@
+print ("its easier then java")
