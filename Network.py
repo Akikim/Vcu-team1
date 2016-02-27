@@ -19,8 +19,16 @@ class GpsData(object):
 			print (gps_Y)
 			print (total_gps_Y)
 		 else:
-		 
+		 """
+		 so first i wanted to set the method that i would use two gps location to determine upon where they person is...
+		 """
+
 	  distance= math.sqrt(math.pow(total_gps_X,2) + math.pow(total_gps_Y,2)) 
+"""
+ so here we are using the distance formula to try and find the location that are the closes for the dog app
+"""
+
+
    #### global-scoped vars #### 
 def generate_form():
    sender =  None
@@ -29,7 +37,9 @@ def generate_form():
    senderID = locationdata
    recieverID = locationdata
    userId= locationdata
-
+'''
+so this is used to generate each of the each of the location of the data point that are stored for each indiviual locations
+'''
 
 
 
@@ -51,7 +61,7 @@ class LinkedList(object):
 #define funtions
 def test():
 
- 
+    
 def main():
    form = cgi.LinkedList()
    if (form.has_key("UserID") and form.has_key('senderID')\
@@ -60,7 +70,12 @@ def main():
 			result = test(form["senderID"].value.form["recieverID"].value)
 		 display_page(result)
 	  else:
-		 genrate_form();
+		 generate_form();
+"""
+so this calls the function that i had created for the two linked list to connect and send each other the informataion
+"""
 
 main()
 
+#
+## this is used to call the main method that should be ablet to tell wheither the id
