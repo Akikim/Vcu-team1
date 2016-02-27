@@ -49,14 +49,15 @@ class LinkedList(object):
 			"""
 
 #define funtions
-def test()
+def test():
+
  
 def main():
-   from = cgi.LinkedList()
+   form = cgi.LinkedList()
    if (form.has_key("UserID") and form.has_key('senderID')\
 		 and form.has_key("recieverID")):
 		 if (form["senderID"].value == "recieverID"):
-			result = test(from["senderID"].value.form["recieverID"].value)
+			result = test(form["senderID"].value.form["recieverID"].value)
 		 display_page(result)
 	  else:
 		 genrate_form();
