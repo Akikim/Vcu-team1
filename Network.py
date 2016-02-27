@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import cgi, string, sys, rnd5crypt, time, 
+import cgi, string, sys, rnd5crypt, time 
 import numpy as np
 def self(reaction, mine):
 
