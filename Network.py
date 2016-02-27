@@ -53,9 +53,9 @@ def test()
  
 def main():
    from = cgi.LinkedList()
-   if (from.has_key("UserID") and from.has_key('senderID')\
-		 and from.has_key("recieverID")):
-		 if (form["LinkedList"].value == "recieverID"):
+   if (form.has_key("UserID") and form.has_key('senderID')\
+		 and form.has_key("recieverID")):
+		 if (form["senderID"].value == "recieverID"):
 			result = test(from["senderID"].value.form["recieverID"].value)
 		 display_page(result)
 	  else:
