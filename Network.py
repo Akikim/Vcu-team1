@@ -1,15 +1,9 @@
 #!/usr/bin/python
 import cgi, string, sys, rnd5crypt, time 
 import numpy as np
-def self(reaction, mine):
-
 class GpsData(object):
-
-
    def connection(self,locationdata):
 	  if self.locationdata():
-
-   
    def locationdata(gps_X,gps_Y):
 	  print (gps_X)
 	  print (gps_Y)
@@ -31,15 +25,16 @@ class GpsData(object):
 def generate_form():
    sender =  None
    reciever = None
+   user = None
    senderID = locationdata
    recieverID = locationdata
-   
+   userId= locationdata
 
 
 
 
 class LinkedList(object):
-   def __init__(self, data=None, next_node=None):
+   def __init__(self, data=None, next_node=None head=None):
 	  self.head = head	 
 	  self.data = data
 	  self.next_node = next_node
@@ -49,25 +44,19 @@ class LinkedList(object):
 		 def get_next(self): 
 			return self.next_node
 		 def set_next(self, new_next):
-			self.next_nodt = new_next
-#define funtions
-def test(id,passwd)
-   passwd_file= open('.password', 'r')
-   line = passwd_file.readline()
-   passwd_file.close()
-   combo= stringsplit(line,":")
-   encrpyted_pw = rnd5crypt.unix_rn4_crypt(passwd,'admin')
-   if (id == combo[0]) and (encrypted_pw[0:20] == comb[1][0:20])):
-	  return "passed"
-   else:
-	  return "failed"
+			self.next_node = new_next
+			"""this is the way in which the Nodes are being configured in asingle linked list
+			"""
 
+#define funtions
+def test()
+ 
 def main():
-   form = cgi.FieldStorage()
-   if (from.has_key("action) and from has_key("username")\
-		 and form.has_key("password")):
-		 if (form["action"].value == "display"):
-			result = test(form[username"].value.form["password"].value)
+   from = cgi.LinkedList()
+   if (from.has_key("UserID") and from.has_key('senderID')\
+		 and from.has_key("recieverID")):
+		 if (form["LinkedList"].value == "recieverID"):
+			result = test(from["senderID"].value.form["recieverID"].value)
 		 display_page(result)
 	  else:
 		 genrate_form();
