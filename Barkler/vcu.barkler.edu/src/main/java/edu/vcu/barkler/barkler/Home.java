@@ -1,11 +1,14 @@
 package edu.vcu.barkler.barkler;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,7 +18,13 @@ import android.widget.Button;
 
 import com.google.android.gms.appindexing.Action;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 
 public class Home extends AppCompatActivity {
@@ -24,8 +33,23 @@ public class Home extends AppCompatActivity {
     private ObjectOutputStream out;
     static double latitude;
     static double longitude;
+
+    JSONObject s;
+    private Socket client;
+    private Thread thread;
+
     protected void onCreate(Bundle savedInstanceState) {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         longitude = location.getLongitude();
         latitude = location.getLatitude();
@@ -35,6 +59,7 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Button fab = (Button) findViewById(R.id.fab);
         Button fab2 = (Button) findViewById(R.id.fab2);
+        new Thread(new ClientThread()).start();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 
@@ -100,6 +125,27 @@ public class Home extends AppCompatActivity {
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://edu.vcu.barkler.barkler/http/host/path")
         );
+    }
+    class ClientThread implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                s = new JSONObject().put("", 42);
+                System.out.println("hello");
+                InetAddress serverAddr = InetAddress.getByName("40.121.85.166");
+                client = new Socket(serverAddr, 8080);
+                PrintWriter out = new PrintWriter(client.getOutputStream());
+                out.print(s);
+                out.flush();
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
 
