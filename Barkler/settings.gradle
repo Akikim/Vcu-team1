@@ -1,1 +1,1 @@
-include ':app', ':vcu.barkler.edu'
+include ':app', ':vcu.barkler.edu', ':gson-2.6.2'

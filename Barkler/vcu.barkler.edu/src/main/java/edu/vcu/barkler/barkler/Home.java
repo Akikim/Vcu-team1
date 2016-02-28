@@ -2,14 +2,10 @@ package edu.vcu.barkler.barkler;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,26 +14,21 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.*;
-import java.net.*;
-import java.util.Locale;
 
 
 public class Home extends AppCompatActivity {
 
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private Socket client;
-
-
+    static double latitude;
+    static double longitude;
     protected void onCreate(Bundle savedInstanceState) {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude=location.getLongitude();
-        double latitude=location.getLatitude();
+        longitude = location.getLongitude();
+        latitude = location.getLatitude();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -46,20 +37,12 @@ public class Home extends AppCompatActivity {
         Button fab2 = (Button) findViewById(R.id.fab2);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        new Thread(new ClientThread()).start();
+
     }
 
     public void profile(View view) {
-        Intent intent = new Intent(this, userProfile.class);
+        Intent intent = new Intent(this, user_profile.class);
         startActivity(intent);
-    }
-
-    public void searchForDogs(View view) {
-        Intent searchForDogs = new Intent(this, searchForTheDoge.class);
-        startActivity(searchForDogs);
-
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
     }
 
 
@@ -105,7 +88,6 @@ public class Home extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
@@ -118,23 +100,6 @@ public class Home extends AppCompatActivity {
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://edu.vcu.barkler.barkler/http/host/path")
         );
-    }
-    class ClientThread implements Runnable {
-
-        @Override
-        public void run() {
-            try {
-                InetAddress serverAddr = InetAddress.getByName("40.121.85.166");
-                client = new Socket(serverAddr, 8080);
-                out = new ObjectOutputStream(client.getOutputStream());
-                out.write(42);
-            } catch (UnknownHostException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        }
     }
 }
 
