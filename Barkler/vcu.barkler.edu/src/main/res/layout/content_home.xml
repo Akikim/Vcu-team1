@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search for Dogs"
+        android:onClick="searchForDogs"
         android:id="@+id/fab2"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:id="@+id/fab"
+        android:onClick="profile"
         android:layout_marginBottom="44dp"
         android:layout_above="@+id/imageView"
         android:layout_centerHorizontal="true" />

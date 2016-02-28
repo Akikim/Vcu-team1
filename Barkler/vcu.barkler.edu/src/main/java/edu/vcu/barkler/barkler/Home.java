@@ -33,12 +33,11 @@ public class Home extends AppCompatActivity {
     private Socket client;
 
 
-    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-    Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-    double longitude=location.getLongitude();
-    double latitude=location.getLatitude();
-
     protected void onCreate(Bundle savedInstanceState) {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        double longitude=location.getLongitude();
+        double latitude=location.getLatitude();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,7 +46,7 @@ public class Home extends AppCompatActivity {
         Button fab2 = (Button) findViewById(R.id.fab2);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        new Thread(new ClientThread()).start();
     }
 
     public void profile(View view) {
@@ -89,9 +88,8 @@ public class Home extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2.connect();
+        // ATTENTION: is was auto-generated to implement the App Indexing API.
+        // See https://g.cTho/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Home Page", // TODO: Define a title for the content shown.
@@ -102,7 +100,6 @@ public class Home extends AppCompatActivity {
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://edu.vcu.barkler.barkler/http/host/path")
         );
-        AppIndex.AppIndexApi.start(client2, viewAction);
     }
 
     @Override
@@ -121,8 +118,23 @@ public class Home extends AppCompatActivity {
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://edu.vcu.barkler.barkler/http/host/path")
         );
-        AppIndex.AppIndexApi.end(client2, viewAction);
-        client2.disconnect();
+    }
+    class ClientThread implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                InetAddress serverAddr = InetAddress.getByName("40.121.85.166");
+                client = new Socket(serverAddr, 8080);
+                out = new ObjectOutputStream(client.getOutputStream());
+                out.write(42);
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+        }
     }
 }
 
