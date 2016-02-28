@@ -36,13 +36,13 @@ public class Home extends AppCompatActivity {
     }
 
     public void profile(View view) {
-        Intent intent = new Intent(this, Profiles.class);
+        Intent intent = new Intent(this, userProfile.class);
         startActivity(intent);
     }
 
     public void searchForDogs(View view)
     {
-        Intent searchForDogs = new Intent(this, searchForDogs.class);
+        Intent searchForDogs = new Intent(this, searchForTheDoge.class);
         startActivity(searchForDogs);
 
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
