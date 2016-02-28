@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Barkler.iml" filepath="$PROJECT_DIR$/Barkler.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/vcu.barkler.edu/vcu.barkler.edu.iml" filepath="$PROJECT_DIR$/vcu.barkler.edu/vcu.barkler.edu.iml" />
     </modules>
   </component>
