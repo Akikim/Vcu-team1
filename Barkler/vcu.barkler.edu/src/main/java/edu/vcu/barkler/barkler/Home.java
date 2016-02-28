@@ -1,6 +1,9 @@
 package edu.vcu.barkler.barkler;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +12,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+
 import java.io.*;
 import java.net.*;
+import java.util.Locale;
 
 
 public class Home extends AppCompatActivity {
@@ -26,25 +31,22 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         Button fab = (Button) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                startActivity(intent);
-            }
-        });
         Button fab2 = (Button) findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
 
+    public void profile(View view) {
+        Intent intent = new Intent(this, Profiles.class);
+        startActivity(intent);
+    }
+
+    public void searchForDogs(View view)
+    {
+        Intent searchForDogs = new Intent(this, searchForDogs.class);
+        startActivity(searchForDogs);
+
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
 
@@ -69,3 +71,4 @@ public class Home extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+

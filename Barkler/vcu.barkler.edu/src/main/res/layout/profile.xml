@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"></TableLayout>
+
+    <TextView
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="  Username"
+        android:id="@+id/textView"
+        android:textSize="25sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_weight="0.04" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="  Descrpition"
+        android:id="@+id/textView2"
+        android:textSize="25sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_weight="0.44" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="  Image"
+        android:id="@+id/textView3"
+        android:textSize="25sp" />
+
+    <ImageButton
+        android:layout_width="140dp"
+        android:layout_height="121dp"
+        android:id="@+id/imageButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="73dp"
+        android:layout_height="34dp"
+        android:text="Done"
+        android:id="@+id/Done"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
